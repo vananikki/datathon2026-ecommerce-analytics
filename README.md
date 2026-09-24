@@ -62,15 +62,11 @@ Mô hình kết hợp 3 kiến trúc Gradient Boosting đa dạng hàm mất má
 * **CatBoost Regressor:** `iterations=1000`, `learning_rate=0.02`, `depth=6`, `loss_function='MAE'` (Tối ưu trực tiếp sai số tuyệt đối).
 * **XGBoost Regressor:** `n_estimators=800`, `learning_rate=0.01`, `max_depth=6`, `objective='reg:absoluteerror'`.
 * **Ensemble Blending:**
-  $$
-  \hat{Y}_{\text{Revenue}} = 0.4 \times \hat{Y}_{\text{LightGBM}} + 0.4 \times \hat{Y}_{\text{CatBoost}} + 0.2 \times \hat{Y}_{\text{XGBoost}}
-  $$
+  $\hat{Y}_{\text{Revenue}} = 0.4 \times \hat{Y}_{\text{LightGBM}} + 0.4 \times \hat{Y}_{\text{CatBoost}} + 0.2 \times \hat{Y}_{\text{XGBoost}}$
 
 ### 4. Dự báo COGS (Giá vốn hàng bán)
 * Để đảm bảo tính nhất quán nghiệp vụ, tỷ lệ $\text{COGS Ratio}$ được tính dựa trên trung bình động 365 ngày gần nhất của tập huấn luyện:
-  $$
-  \text{COGS Ratio} = \frac{\sum_{t \in \text{last 365 days}} \text{COGS}_t}{\sum_{t \in \text{last 365 days}} \text{Revenue}_t}
-  $$
+  $\text{COGS Ratio} = \frac{\sum_{t \in \text{last 365 days}} \text{COGS}_t}{\sum_{t \in \text{last 365 days}} \text{Revenue}_t}$
 * Doanh thu dự báo được ánh xạ sang COGS kết hợp hệ số nhiễu vi mô: $\text{COGS}_{\text{pred}} = \text{Revenue}_{\text{pred}} \times \text{COGS Ratio} \times \epsilon$.
 
 ---
